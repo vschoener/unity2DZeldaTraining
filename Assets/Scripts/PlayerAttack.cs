@@ -6,6 +6,8 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject sword;
 
+    public GameObject swordEffect;
+
     private GameObject currentSword;
 
     private Player player;
@@ -47,11 +49,17 @@ public class PlayerAttack : MonoBehaviour
             this.attackTimeLeft -= Time.deltaTime;
 
             if (this.attackTimeLeft < 0) {
+
+                if (this.specialAttack) {
+                    GameObject currentSwordEffect = Instantiate(this.swordEffect, currentSword.transform.position, currentSword.transform.rotation);
+                }
+
                 Destroy(currentSword);
                 playerMovement.setIsAbleToMove(true);
                 this.setIsAbleToAttack(true);
                 this.player.animator.SetInteger("attackDirection", Enums.IDLE);
                 this.player.animator.speed = 0;
+
                 // If it's a special attack, the sword animation is longer than the classic and doesn't need to block any movements
             } else if (this.specialAttack && this.specialAttackAnimationTime - this.simpleaAttackAnimationTime > this.attackTimeLeft) {
                 playerMovement.setIsAbleToMove(true);
@@ -72,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
             this.attackTimeLeft = this.specialAttackAnimationTime;
         } else {
             this.attackTimeLeft = this.simpleaAttackAnimationTime;
+            this.specialAttack = false;
         }
 
         this.playerMovement.setIsAbleToMove(false);
