@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
     private float lastTimeKeyDown = 0.0F;
 
     private float rateSpeedKeyDown = 0.05F;
@@ -57,8 +56,7 @@ public class Player : MonoBehaviour
 
     public bool addHearth()
     {
-        if (this.getCurrentHeart() < this.getMaxHeart())
-        {
+        if (this.getCurrentHeart() < this.getMaxHeart()) {
             this.currentHeart++;
 
             return true;
@@ -69,8 +67,7 @@ public class Player : MonoBehaviour
 
     public bool removeHearth()
     {
-        if (this.getCurrentHeart() >= 0)
-        {
+        if (this.getCurrentHeart() >= 0) {
             this.currentHeart--;
 
             return true;

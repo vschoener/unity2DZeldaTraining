@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool canMove;
 
     // Use this for initialization
     void Start()
     {
-
+        this.canMove = true;
     }
 
     void Update()
@@ -21,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Animator animator = player.animator;
         float speed = player.speed;
+
+        if (!this.canMove) {
+            return ;
+        }
 
         if (Input.GetKey(KeyCode.Z)) {
             animator.speed = 1;
@@ -41,5 +46,17 @@ public class PlayerMovement : MonoBehaviour
         } else {
             animator.speed = 0;
         }
+    }
+
+    public PlayerMovement setIsAbleToMove(bool state)
+    {
+        this.canMove = state;
+
+        return this;
+    }
+
+    public bool isAbleToMove()
+    {
+        return this.canMove;
     }
 }
