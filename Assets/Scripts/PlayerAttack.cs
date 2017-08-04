@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       this.handleAttacksAnimation();
+        this.handleAttacksAnimation();
         if (Input.GetKeyDown(KeyCode.L)) {
             this.Attack();
         }
@@ -50,8 +50,12 @@ public class PlayerAttack : MonoBehaviour
                 Destroy(currentSword);
                 playerMovement.setIsAbleToMove(true);
                 this.setIsAbleToAttack(true);
+                this.player.animator.SetInteger("attackDirection", Enums.IDLE);
+                this.player.animator.speed = 0;
+                // If it's a special attack, the sword animation is longer than the classic and doesn't need to block any movements
             } else if (this.specialAttack && this.specialAttackAnimationTime - this.simpleaAttackAnimationTime > this.attackTimeLeft) {
                 playerMovement.setIsAbleToMove(true);
+                this.player.animator.SetInteger("attackDirection", Enums.IDLE);
             }
         }
     }
@@ -62,6 +66,7 @@ public class PlayerAttack : MonoBehaviour
             return ;
         }
 
+        this.player.animator.speed = 1;
         if (this.player.getCurrentHeart() == this.player.getMaxHeart()) {
             this.specialAttack = true;
             this.attackTimeLeft = this.specialAttackAnimationTime;
@@ -73,6 +78,7 @@ public class PlayerAttack : MonoBehaviour
         this.setIsAbleToAttack(false);
         currentSword = Instantiate(this.sword, transform.position, this.sword.transform.rotation);
         int swordDirection = this.player.animator.GetInteger("direction");
+        this.player.animator.SetInteger("attackDirection", swordDirection);
 
         if (swordDirection == (int)Enums.Direction.North) {
             currentSword.transform.Rotate(0, 0, 0);
