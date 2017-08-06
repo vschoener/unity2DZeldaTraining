@@ -91,16 +91,40 @@ public class PlayerAttack : MonoBehaviour
 
         if (swordDirection == (int)Enums.Direction.North) {
             currentSword.transform.Rotate(0, 0, 0);
-            currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.up * this.player.powerForce);
+            if (!this.specialAttack) {
+                Vector3 newSwordPosition = currentSword.transform.position;
+                newSwordPosition.y += 0.15f;
+                currentSword.transform.position = newSwordPosition;
+            } else {
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.up * this.player.powerForce);
+            }
         } else if (swordDirection == (int)Enums.Direction.East) {
             currentSword.transform.Rotate(0, 0, -90);
-            currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.right * this.player.powerForce);
+            if (!this.specialAttack) {
+                Vector3 newSwordPosition = currentSword.transform.position;
+                newSwordPosition.x += 0.15f;
+                currentSword.transform.position = newSwordPosition;
+            } else {
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.right * this.player.powerForce);
+            }
         } else if (swordDirection == (int)Enums.Direction.South) {
             currentSword.transform.Rotate(0, 0, 180);
-            currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.down * this.player.powerForce);
+            if (!this.specialAttack) {
+                Vector3 newSwordPosition = currentSword.transform.position;
+                newSwordPosition.y -= 0.15f;
+                currentSword.transform.position = newSwordPosition;
+            } else {
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.down * this.player.powerForce);
+            }
         } else if (swordDirection == (int)Enums.Direction.West) {
             currentSword.transform.Rotate(0, 0, 90);
-            currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.left * this.player.powerForce);
+            if (!this.specialAttack) {
+                Vector3 newSwordPosition = currentSword.transform.position;
+                newSwordPosition.x -= 0.15f;
+                currentSword.transform.position = newSwordPosition;
+            } else {
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.left * this.player.powerForce);
+            }
         }
     }
 
