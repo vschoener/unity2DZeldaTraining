@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour {
+abstract public class Monster : MonoBehaviour {
 
     protected int health;
 
@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour {
             this.health -= weapon.getDamage();
 
             if (this.health <= 0) {
+                this.deathAnimation();
                 Destroy(gameObject);
             }
 
@@ -37,4 +38,6 @@ public class Monster : MonoBehaviour {
             weapon.destroyWeapon();
         }
     }
+
+    abstract public void deathAnimation();
 }

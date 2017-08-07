@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordEffect : MonoBehaviour {
+public class ParticleWatcher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
