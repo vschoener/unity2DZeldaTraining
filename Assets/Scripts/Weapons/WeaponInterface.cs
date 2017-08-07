@@ -1,0 +1,5 @@
+interface WeaponInterface
+{
+
+    void destroyWeapon();
+}

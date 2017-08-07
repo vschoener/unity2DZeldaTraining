@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212381243988675462}
   - component: {fileID: 50842481580889150}
   - component: {fileID: 61650953690070050}
+  - component: {fileID: 114413830260042512}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1974279818263060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.069, y: 0.429, z: 0}
+  m_LocalPosition: {x: 0.844, y: -0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,6 +88,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &114413830260042512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974279818263060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e0bc5be9d484c6e963f73ffd37967e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroySwordEffect: {fileID: 1193309247720214, guid: a6a7fb08e4e83417b9caa85161a47e5b,
+    type: 2}
 --- !u!212 &212381243988675462
 SpriteRenderer:
   m_ObjectHideFlags: 1

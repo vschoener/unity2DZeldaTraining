@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.currentHeart = 3;
+        this.currentHeart = 5;
         this.maxHeart = 5;
         this.speed = 2;
         this.animator = GetComponent<Animator>();
@@ -75,5 +75,4 @@ public class Player : MonoBehaviour
 
         return false;
     }
-
 }
