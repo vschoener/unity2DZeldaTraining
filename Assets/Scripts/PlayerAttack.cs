@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
                 newSwordPosition.y += 0.15f;
                 currentSword.transform.position = newSwordPosition;
             } else {
-                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.up * this.player.powerForce);
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.up * Player.powerForce);
             }
         } else if (swordDirection == (int)Enums.Direction.East) {
             currentSword.transform.Rotate(0, 0, -90);
@@ -98,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
                 newSwordPosition.x += 0.15f;
                 currentSword.transform.position = newSwordPosition;
             } else {
-                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.right * this.player.powerForce);
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.right * Player.powerForce);
             }
         } else if (swordDirection == (int)Enums.Direction.South) {
             currentSword.transform.Rotate(0, 0, 180);
@@ -107,7 +107,7 @@ public class PlayerAttack : MonoBehaviour
                 newSwordPosition.y -= 0.15f;
                 currentSword.transform.position = newSwordPosition;
             } else {
-                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.down * this.player.powerForce);
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.down * Player.powerForce);
             }
         } else if (swordDirection == (int)Enums.Direction.West) {
             currentSword.transform.Rotate(0, 0, 90);
@@ -116,7 +116,7 @@ public class PlayerAttack : MonoBehaviour
                 newSwordPosition.x -= 0.15f;
                 currentSword.transform.position = newSwordPosition;
             } else {
-                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.left * this.player.powerForce);
+                currentSword.GetComponent<Rigidbody2D>().AddForce(Vector2.left * Player.powerForce);
             }
         }
     }

@@ -115,6 +115,12 @@ namespace Monster {
 
         private void handlePlayerCollision(Player player) 
         {
+            if (player.isInvincible()) {
+                return ;
+            }
+
+            // Add force to push the player from the monster
+            player.initializeCollisionInvincibility();
             player.decreaseLife(this.damageAmount);
         }
 

@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
+    public const float invincibilityCollisionTime = 1f;
+
+    public const float powerForce = 100f;
+
+    public const float speed = 2f;
 
     public Animator animator;
 
@@ -13,21 +17,37 @@ public class Player : MonoBehaviour
 
     private int maxHeart;
 
-    public float powerForce = 100.0F;
+    public float currentCollisionInvincibilityTime = 0;
+
+    public float currentMovementHitCollisionTime = 0;
+
+    SpriteRenderer spriteRenderer;
 
     // Use this for initialization
     void Start()
     {
         this.currentHeart = 5;
         this.maxHeart = 5;
-        this.speed = 2;
         this.animator = GetComponent<Animator>();
         this.animator.SetInteger("direction", (int)Enums.Direction.South);
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        this.handleInvincibleEvent();
+    }
+
+    private void handleInvincibleEvent()
+    {
+        // Update collision invincibility time
+        if (this.isInvincible()) {
+            this.spriteRenderer.enabled = !this.spriteRenderer.enabled;
+            this.currentCollisionInvincibilityTime -= Time.deltaTime;
+        } else if (!this.spriteRenderer.enabled) {
+            this.spriteRenderer.enabled = true;
+        }
     }
 
     public int getCurrentHeart()
@@ -66,5 +86,17 @@ public class Player : MonoBehaviour
         }
 
         return false;
+    }
+
+    public Player initializeCollisionInvincibility()
+    {
+        this.currentCollisionInvincibilityTime = Player.invincibilityCollisionTime;
+
+        return this;
+    }
+
+    public bool isInvincible()
+    {
+        return this.currentCollisionInvincibilityTime > 0;
     }
 }

@@ -29,19 +29,19 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Z)) {
             player.animator.speed = 1;
             player.animator.SetInteger("direction", (int)Enums.Direction.North);
-            transform.Translate(0, player.speed * Time.deltaTime, 0);
+            transform.Translate(0, Player.speed * Time.deltaTime, 0);
         } else if (Input.GetKey(KeyCode.S)) {
             player.animator.speed = 1;
             player.animator.SetInteger("direction", (int)Enums.Direction.South);
-            transform.Translate(0, -player.speed * Time.deltaTime, 0);
+            transform.Translate(0, -Player.speed * Time.deltaTime, 0);
         } else if (Input.GetKey(KeyCode.Q)) {
             player.animator.speed = 1;
             player.animator.SetInteger("direction", (int)Enums.Direction.West);
-            transform.Translate(-player.speed * Time.deltaTime, 0, 0);
+            transform.Translate(-Player.speed * Time.deltaTime, 0, 0);
         } else if (Input.GetKey(KeyCode.D)) {
             player.animator.speed = 1;
             player.animator.SetInteger("direction", (int)Enums.Direction.East);
-            transform.Translate(player.speed * Time.deltaTime, 0, 0);
+            transform.Translate(Player.speed * Time.deltaTime, 0, 0);
         } else {
             this.stopMovement();
         }
