@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster {
-    public class BlueDragon : AbstractEnnemy {
+    public class BlueDragon : AbstractEnemy {
 
         public GameObject deathParticle;
 

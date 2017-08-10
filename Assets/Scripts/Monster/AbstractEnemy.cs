@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster {
-    public abstract class AbstractEnnemy : MonoBehaviour {
+    public abstract class AbstractEnemy : MonoBehaviour {
 
         protected int health;
 
         protected float movementSpeed;
 
-        protected int damageAmont;
+        protected int damageAmount;
 
         protected int dammageOnCollision;
 
@@ -29,10 +29,10 @@ namespace Monster {
             this.spriteRenderer = GetComponent<SpriteRenderer>();
             this.health = 1;
             this.movementSpeed = 1f;
-            this.damageAmont = 1;
+            this.damageAmount = 1;
             this.movementTimerLeft = 0;
             this.movementTimer = 1.5f;
-            this.direction = (int)Enums.Direction.East;
+            this.direction = Random.Range(0, 3);
             this.dammageOnCollision = 1;
         }
         
@@ -44,7 +44,7 @@ namespace Monster {
                 this.direction = Random.Range(0, 3);
                 this.movementTimerLeft = this.movementTimer;
 
-                // Use facing sprite for simple ennemies
+                // Use facing sprite for simple enemies
                 // (Used to learn Sprite system without animation)
                 if (this.facingSprites.Length > 0 && this.facingSprites.Length == 4) {
                     this.spriteRenderer.sprite = this.facingSprites[this.direction];

@@ -55,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
 
                 // If it's a special attack, the sword animation is longer than the classic and doesn't need to block any movements
             } else if (this.specialAttackState && this.specialAttackAnimationTime - this.simpleaAttackAnimationTime > this.attackTimeLeft) {
-                playerMovement.setIsAbleToMove(true);
+                playerMovement.enableMovement();
                 this.player.animator.SetInteger("attackDirection", Enums.IDLE);
             }
         }
@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviour
             this.specialAttackState = false;
         }
 
-        this.playerMovement.setIsAbleToMove(false);
+        this.playerMovement.disableMovement();
         this.setIsAbleToAttack(false);
         currentSword = Instantiate(this.sword, transform.position, this.sword.transform.rotation);
         int swordDirection = this.player.animator.GetInteger("direction");
@@ -140,7 +140,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void releaseAllAction()
     {
-        playerMovement.setIsAbleToMove(true);
+        playerMovement.enableMovement();
         this.setIsAbleToAttack(true);
         this.player.animator.SetInteger("attackDirection", Enums.IDLE);
         this.player.animator.speed = 0;

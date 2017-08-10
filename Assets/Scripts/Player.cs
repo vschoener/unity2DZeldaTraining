@@ -40,10 +40,13 @@ public class Player : MonoBehaviour
         return this.maxHeart;
     }
 
-    public bool addHearth()
+    public bool increaseLife(int number)
     {
         if (this.getCurrentHeart() < this.getMaxHeart()) {
-            this.currentHeart++;
+            this.currentHeart += number;
+            if (this.currentHeart > this.maxHeart) {
+                this.currentHeart = this.maxHeart;
+            }
 
             return true;
         }
@@ -51,10 +54,13 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public bool removeHearth()
+    public bool decreaseLife(int number)
     {
         if (this.getCurrentHeart() >= 0) {
-            this.currentHeart--;
+            this.currentHeart -= number;
+            if (this.currentHeart < 0) {
+                this.currentHeart = 0;
+            }
 
             return true;
         }

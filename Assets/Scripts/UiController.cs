@@ -41,10 +41,10 @@ public class UiController : MonoBehaviour
     void checkHealth()
     {
         if (Input.GetKeyDown(KeyCode.O)) {
-            this.player.removeHearth();
+            this.player.decreaseLife(1);
         }
         else if (Input.GetKeyDown(KeyCode.P) && this.player.getCurrentHeart() < this.player.getMaxHeart()) {
-            this.player.addHearth();
+            this.player.increaseLife(1);
         }
 
         this.renderHealth();

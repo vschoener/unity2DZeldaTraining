@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster {
-    public class BlueCrab : AbstractEnnemy {
+    public class BlueCrab : AbstractEnemy {
 
         public GameObject deathParticle;
 
@@ -12,7 +12,7 @@ namespace Monster {
             base.Start();
             this.health = 2;
             this.movementSpeed = 0.7f;
-            this.damageAmont = 1;
+            this.damageAmount = 1;
         }
         
         // Update is called once per frame

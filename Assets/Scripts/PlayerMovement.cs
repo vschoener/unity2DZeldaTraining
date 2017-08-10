@@ -6,51 +6,64 @@ public class PlayerMovement : MonoBehaviour
 {
     private bool canMove;
 
+    private Player player;
+
     // Use this for initialization
     void Start()
     {
+        this.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         this.canMove = true;
     }
 
     void Update()
     {
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        this.handleMovement(player);
+        this.handleMovement();
     }
 
-    private void handleMovement(Player player)
+    private void handleMovement()
     {
-        Animator animator = player.animator;
-        float speed = player.speed;
-
         if (!this.canMove) {
             return ;
         }
 
         if (Input.GetKey(KeyCode.Z)) {
-            animator.speed = 1;
-            animator.SetInteger("direction", (int)Enums.Direction.North);
-            transform.Translate(0, speed * Time.deltaTime, 0);
+            player.animator.speed = 1;
+            player.animator.SetInteger("direction", (int)Enums.Direction.North);
+            transform.Translate(0, player.speed * Time.deltaTime, 0);
         } else if (Input.GetKey(KeyCode.S)) {
-            animator.speed = 1;
-            animator.SetInteger("direction", (int)Enums.Direction.South);
-            transform.Translate(0, -speed * Time.deltaTime, 0);
+            player.animator.speed = 1;
+            player.animator.SetInteger("direction", (int)Enums.Direction.South);
+            transform.Translate(0, -player.speed * Time.deltaTime, 0);
         } else if (Input.GetKey(KeyCode.Q)) {
-            animator.speed = 1;
-            animator.SetInteger("direction", (int)Enums.Direction.West);
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
+            player.animator.speed = 1;
+            player.animator.SetInteger("direction", (int)Enums.Direction.West);
+            transform.Translate(-player.speed * Time.deltaTime, 0, 0);
         } else if (Input.GetKey(KeyCode.D)) {
-            animator.speed = 1;
-            animator.SetInteger("direction", (int)Enums.Direction.East);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+            player.animator.speed = 1;
+            player.animator.SetInteger("direction", (int)Enums.Direction.East);
+            transform.Translate(player.speed * Time.deltaTime, 0, 0);
         } else {
-            animator.speed = 0;
+            this.stopMovement();
         }
     }
 
-    public PlayerMovement setIsAbleToMove(bool state)
+    public PlayerMovement stopMovement()
     {
-        this.canMove = state;
+        this.player.animator.speed = 0;
+
+        return this;
+    }
+
+    public PlayerMovement enableMovement()
+    {
+        this.canMove = true;
+
+        return this;
+    }
+
+    public PlayerMovement disableMovement()
+    {
+        this.canMove = false;
 
         return this;
     }
