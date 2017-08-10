@@ -18,12 +18,22 @@ If you want to try it, just simply download / clone the sources and launch it us
 
 ## Feature done
 
- - Player Movement
- - Player attack
- - Player health and UI
+2017 August 10
+ - Handle enemy animation
+ - Crab enemy added with simple facing animation (+review Monster / Enemy inheritance)
+
+2017 August 07
+ - Handle hit box attack against enemies
+ - Handle monster death animation
  - Monster (BlueDragon) added with basic health
  - Monster (BlueDragon) can be killed
+
+2017 August 05
+ - Add special sword effect when destroyed
+ - Add direction animation during attack
+ - Handle attack and super attack
+
+ Before:
+ - Player Movement
+ - Player health and UI
  - Classic Weapon available
- - Weapon animation and collision check
- - Monster death animation
- - Weapon explosion when special power active

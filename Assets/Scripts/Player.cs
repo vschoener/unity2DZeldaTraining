@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private float lastTimeKeyDown = 0.0F;
-
-    private float rateSpeedKeyDown = 0.05F;
-
     public float speed;
 
     public Animator animator;
@@ -27,21 +23,11 @@ public class Player : MonoBehaviour
         this.speed = 2;
         this.animator = GetComponent<Animator>();
         this.animator.SetInteger("direction", (int)Enums.Direction.South);
-        //this.initializeWeapons();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        /*if (Time.time > rateSpeedKeyDown + lastTimeKeyDown) {
-			lastTimeKeyDown = Time.time;
-		}*/
-    }
-
-    void initializeWeapons()
-    {
-        //GameObject gameObject = Instantiate(this.sword);
     }
 
     public int getCurrentHeart()

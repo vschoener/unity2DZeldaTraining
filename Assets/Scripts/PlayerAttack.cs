@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
 
     private bool canAttackState;
 
-    private bool hasSecialAttack;
+    private bool specialAttackState;
 
     // Use this for initialization
     void Start()
@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         this.playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         this.attackTimeLeft = 0;
         this.canAttackState = true;
-        this.hasSecialAttack = false;
+        this.specialAttackState = false;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
                 this.releaseAllAction();
 
                 // If it's a special attack, the sword animation is longer than the classic and doesn't need to block any movements
-            } else if (this.hasSecialAttack && this.specialAttackAnimationTime - this.simpleaAttackAnimationTime > this.attackTimeLeft) {
+            } else if (this.specialAttackState && this.specialAttackAnimationTime - this.simpleaAttackAnimationTime > this.attackTimeLeft) {
                 playerMovement.setIsAbleToMove(true);
                 this.player.animator.SetInteger("attackDirection", Enums.IDLE);
             }
@@ -69,11 +69,11 @@ public class PlayerAttack : MonoBehaviour
 
         this.player.animator.speed = 1;
         if (this.player.getCurrentHeart() == this.player.getMaxHeart()) {
-            this.hasSecialAttack = true;
+            this.specialAttackState = true;
             this.attackTimeLeft = this.specialAttackAnimationTime;
         } else {
             this.attackTimeLeft = this.simpleaAttackAnimationTime;
-            this.hasSecialAttack = false;
+            this.specialAttackState = false;
         }
 
         this.playerMovement.setIsAbleToMove(false);
@@ -84,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (swordDirection == (int)Enums.Direction.North) {
             currentSword.transform.Rotate(0, 0, 0);
-            if (!this.hasSecialAttack) {
+            if (!this.specialAttackState) {
                 Vector3 newSwordPosition = currentSword.transform.position;
                 newSwordPosition.y += 0.15f;
                 currentSword.transform.position = newSwordPosition;
@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
             }
         } else if (swordDirection == (int)Enums.Direction.East) {
             currentSword.transform.Rotate(0, 0, -90);
-            if (!this.hasSecialAttack) {
+            if (!this.specialAttackState) {
                 Vector3 newSwordPosition = currentSword.transform.position;
                 newSwordPosition.x += 0.15f;
                 currentSword.transform.position = newSwordPosition;
@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
             }
         } else if (swordDirection == (int)Enums.Direction.South) {
             currentSword.transform.Rotate(0, 0, 180);
-            if (!this.hasSecialAttack) {
+            if (!this.specialAttackState) {
                 Vector3 newSwordPosition = currentSword.transform.position;
                 newSwordPosition.y -= 0.15f;
                 currentSword.transform.position = newSwordPosition;
@@ -111,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
             }
         } else if (swordDirection == (int)Enums.Direction.West) {
             currentSword.transform.Rotate(0, 0, 90);
-            if (!this.hasSecialAttack) {
+            if (!this.specialAttackState) {
                 Vector3 newSwordPosition = currentSword.transform.position;
                 newSwordPosition.x -= 0.15f;
                 currentSword.transform.position = newSwordPosition;
@@ -135,7 +135,7 @@ public class PlayerAttack : MonoBehaviour
 
     public bool hasSpecialAttack()
     {
-        return this.hasSecialAttack;
+        return this.specialAttackState;
     }
 
     public void releaseAllAction()
