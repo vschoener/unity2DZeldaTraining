@@ -90,6 +90,34 @@ namespace Monster {
             }
         }
 
+        /// <summary>
+        /// Sent when an incoming collider makes contact with this object's
+        /// collider (2D physics only).
+        /// </summary>
+        /// <param name="other">The Collision2D data associated with this collision.</param>
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            switch(other.gameObject.tag) {
+                case "Player":
+                    this.handlePlayerCollision(other.gameObject.GetComponent<Player>());
+                break;
+            }
+        }
+
+        void OnCollisionStay2D(Collision2D other)
+        {
+            switch(other.gameObject.tag) {
+                case "Player":
+                    this.handlePlayerCollision(other.gameObject.GetComponent<Player>());
+                break;
+            }
+        }
+
+        private void handlePlayerCollision(Player player) 
+        {
+            player.decreaseLife(this.damageAmount);
+        }
+
         abstract public void deathAnimation();
     }
 }
