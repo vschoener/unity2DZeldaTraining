@@ -39,7 +39,7 @@ namespace Monster {
         }
         
         // Update is called once per frame
-        virtual protected void Update () {
+        virtual protected void Update() {
             
             this.movementTimerLeft -= Time.deltaTime;
             if (movementTimerLeft <= 0) {
