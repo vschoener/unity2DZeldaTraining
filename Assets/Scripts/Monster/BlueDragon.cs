@@ -9,8 +9,9 @@ namespace Monster {
 
         // Use this for initialization
         protected override void Start () {
-            this.health = 2;
             base.Start();	
+            this.health = 2;
+            this.dammageOnCollision = 2;
         }
         
         // Update is called once per frame

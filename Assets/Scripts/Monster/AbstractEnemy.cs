@@ -16,17 +16,19 @@ namespace Monster {
         protected SpriteRenderer spriteRenderer;
 
         public Sprite[] facingSprites;
+        
+        protected Animator animator;
 
         public int direction;
 
         public float movementTimer;
-
 
         public float movementTimerLeft;
 
         // Use this for initialization
         virtual protected void Start () {
             this.spriteRenderer = GetComponent<SpriteRenderer>();
+            this.animator = GetComponent<Animator>();
             this.health = 1;
             this.movementSpeed = 1f;
             this.damageAmount = 1;
@@ -41,13 +43,15 @@ namespace Monster {
             
             this.movementTimerLeft -= Time.deltaTime;
             if (movementTimerLeft <= 0) {
-                this.direction = Random.Range(0, 3);
+                this.direction = Random.Range(0, 4);
                 this.movementTimerLeft = this.movementTimer;
 
                 // Use facing sprite for simple enemies
                 // (Used to learn Sprite system without animation)
                 if (this.facingSprites.Length > 0 && this.facingSprites.Length == 4) {
                     this.spriteRenderer.sprite = this.facingSprites[this.direction];
+                } else if (this.animator != null) {
+                    this.animator.SetInteger("direction", this.direction);
                 }
             }
             
@@ -121,7 +125,7 @@ namespace Monster {
 
             // Add force to push the player from the monster
             player.initializeCollisionInvincibility();
-            player.decreaseLife(this.damageAmount);
+            player.decreaseLife(this.dammageOnCollision);
         }
 
         abstract public void deathAnimation();
