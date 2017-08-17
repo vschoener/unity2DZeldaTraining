@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     public const float powerForce = 100f;
 
-    public const float speed = 2f;
+    public const float speed = 1.5f;
 
     public Animator animator;
 

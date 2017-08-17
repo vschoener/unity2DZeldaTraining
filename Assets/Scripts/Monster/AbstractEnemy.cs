@@ -67,6 +67,13 @@ namespace Monster {
                 }
             }
             
+        }
+
+
+        /// <summary>
+        /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        void FixedUpdate() {
             this.handleMovement();
         }
 

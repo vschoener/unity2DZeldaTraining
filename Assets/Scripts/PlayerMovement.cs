@@ -17,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+    }
+         
+    void FixedUpdate()
+    {
+        // Avoid bounce collision using FixedUpdate
         this.handleMovement();
     }
 
