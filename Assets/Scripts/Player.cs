@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "EnemyAttack") {
+            this.initializeCollisionInvincibility();
             this.decreaseLife(other.gameObject.GetComponent<EnemyAttack>().getDamageAmount());
             Destroy(other.gameObject);
         }
