@@ -24,6 +24,13 @@ namespace Monster {
         {
             Instantiate(this.deathParticle, transform.position, transform.rotation); 
         }
-    }
+        
+        public override void startAttack()
+        {
+        }
 
+        public override void endAttack()
+       {
+       } 
+    }
 }

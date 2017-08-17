@@ -18,8 +18,20 @@ If you want to try it, just simply download / clone the sources and launch it us
 
 ## Feature done
 
+2017 August 17
+- Add wall scene for testing purpose
+- Add enemy attack process (Pre, On and post attack state)
+- Enemy attack will decrease Player life
+
+2017 August 16
+- Add Dragon monster ! (And process animation)
+
+2017 August 11
+- Handle player invincibility when hit by enemy collision
+- Decrease player life when hit by enemy collision
+
 2017 August 10
- - Handle enemy animation
+ - Handle enemy movement animation
  - Crab enemy added with simple facing animation (+review Monster / Enemy inheritance)
 
 2017 August 07
